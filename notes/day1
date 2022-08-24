@@ -1,0 +1,44 @@
+
+
+x86 assembly
+
+started with the intel 8086
+  - only did integer arithmetic 
+  - later released 8087, which added floating point arithmetic
+  - 80286, pentium, ... 
+
+what is bss?
+
+
+reserving float array 
+
+in assembly
+-------
+segment .bss
+myinfo resq 50
+
+to c++
+------
+double myinfo[50];
+
+
+segment .text
+two_floats; // this is file name
+
+back up register
+push rbp
+mov rbp, rsp
+
+
+mov - copies data from one register to the other
+ex) mov rbp, rsp
+
+
+printf(form, message)
+       rdi,  rsi
+
+
+put next line into main function
+float num = asmfunc()
+
+make sure asmfunc is declared globally

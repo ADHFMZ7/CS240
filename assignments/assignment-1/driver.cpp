@@ -1,17 +1,12 @@
-#include <iostream>
+#include <stdio.h>
 
-extern "C" 
-{
-extern int float_number();
-int gvar // global variable
-}
-
+extern "C" double start();
 
 int main()
 {
-  std::cout << "Welcome to Floating Point Numbers by Ahmad Aldasouqi." << std::endl;
+  printf("%s\n", "Welcome to Floating Point Numbers by Ahmad Aldasouqi.");
 
-  two_floats()
+  printf("The driver module received this float number %f and will keep it.\n", start());
 
-  std::cout << "Program exited, thank you for using my program" << std::endl;
+  printf("%s\n", "Program exited, thank you for using my program");
 }

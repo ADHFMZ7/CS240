@@ -1,0 +1,15 @@
+
+
+
+midterm on the 8th week
+=================
+
+Assignment 2:
+  input two floats without validation
+    -assume user gives valid input
+  compute sqrt(a^2 + b^2)
+  output hypotenuse
+  will take multiple instructions
+
+
+

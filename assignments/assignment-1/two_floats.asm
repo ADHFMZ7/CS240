@@ -1,11 +1,12 @@
-;=============================================== 
-;
-; Double Doubles
-; written by Ahmad Aldasouqi
-; ahmadaldasouqi@csu.fullerton.edu
-; 09-05-2022
-;
-;===============================================
+;======================================; 
+;                                      ;
+;           Double Doubles             ;
+;     written by Ahmad Aldasouqi       ;
+;   ahmadaldasouqi@csu.fullerton.edu   ;
+;              09-05-2022              ;
+;                                      ;
+;======================================;
+
 extern printf
 extern scanf
 extern isfloat
@@ -24,7 +25,7 @@ larger  db 	"The larger float is %.6lf", 10, 0
 
 segment .bss
 
-  //
+  // This section is empty
 
 segment .text
 

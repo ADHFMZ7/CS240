@@ -11,5 +11,12 @@ Assignment 2:
   output hypotenuse
   will take multiple instructions
 
+Two's complement (signed ints)
 
-
+  "width" = how many bits 
+    ex) c int = width 32 
+  in twos complement, far left bit is "sign"
+    ex) 11101: number is negative bc first bit is 1
+    ex_ 01101: number is positive bc first bit is 0
+  to 
+     

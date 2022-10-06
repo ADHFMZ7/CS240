@@ -1,0 +1,18 @@
+What i missed
+  the following is gdb
+  view general purpose registers
+  program variablse
+
+
+Bytes | x86 | 
+------|-----|
+ 4    |     |
+ 8    |     |
+ 16   |     |
+ 32   |     |
+ 64   |     |
+ 128  |     |
+
+
+ p/<form>_<variable> ?? prints value
+ x/<form>_<variable> ?? prints dereferenced pointer 

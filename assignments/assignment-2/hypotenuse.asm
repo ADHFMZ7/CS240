@@ -38,11 +38,12 @@ start:
   push  r15
   push  rbx
   pushf
+  jmp   input
 
+input:
  
 
 
-  call 
 
   
 

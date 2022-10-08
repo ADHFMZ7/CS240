@@ -11,7 +11,13 @@ extern atof
 
 section .data
   
-   
+  prompt  db  "Please enter your last name: ", 0
+  prompt1 db  "Please enter your title: ", 0
+  prompt2 db  "Please enter the sides of your triangle separated by ws: ", 0
+
+  output  db  "The length of the hypotenuse is %.6F"
+
+  exit    db  "PLease enjoy your triangles %s %s.", 10, 0
 
 section .bss
 

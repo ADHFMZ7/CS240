@@ -24,6 +24,7 @@ section .data
 
 section .bss
 
+
 section .text
 
   global  start
@@ -85,8 +86,3 @@ end:
   pop   rbp
 
   ret
-
-
-
-
-

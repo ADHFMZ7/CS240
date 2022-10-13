@@ -105,6 +105,9 @@ start:
     call    printf
     pop     rax
 
+    ; Calls the reverse module
+
+
     pop     rax
 
     popf                                                    

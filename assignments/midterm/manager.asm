@@ -89,7 +89,7 @@ start:
     push    qword   0
     mov     rax,    0
     mov     rdi,    str3
-    mov     rsi,    r13
+    mov     rsi,    r15
     call    printf
     pop     rax
 

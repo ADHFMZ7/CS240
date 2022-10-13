@@ -5,7 +5,7 @@ extern scanf
 
 section .data
 
-int_form db "%d", 0
+int_form db "%ld", 0
 
 section .bss
 
@@ -40,7 +40,7 @@ loop:
 
   mov   rax,  0
   mov   rdi,  int_form
-  push  qword 0
+  sub   rsp,  1024
   mov   rsi,  rsp
   call  scanf
   cdqe

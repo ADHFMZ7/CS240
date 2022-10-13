@@ -32,7 +32,7 @@ section .text
 global start
 
 start:
-
+    ; backups for registers initial state
     push rbp
     mov  rbp,rsp
     push rdi                                                   
@@ -125,6 +125,7 @@ start:
     pop     rax
     mov     rax,    b
 
+    ;Restores registers initial state
     popf                                                    
     pop rbx                                                     
     pop r15                                                     

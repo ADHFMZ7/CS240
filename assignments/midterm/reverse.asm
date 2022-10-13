@@ -14,7 +14,7 @@ segment .text
 global reverse
 
 reverse:
-
+    ;   Backs up registers
     push rbp
     mov  rbp,rsp
     push rdi                                                   
@@ -41,6 +41,7 @@ reverse:
 
     mov     rcx,    0
 
+; First loop pushes array elements onto the stack
 loop:
     cmp     rcx,    r13
     jge     terminate 
@@ -49,6 +50,7 @@ loop:
     inc     rcx 
     jmp     loop
 
+; Second loop pops the elements off the stack and puts them into array b
 terminate:
     mov     rcx,    0
 loop_two:
@@ -62,6 +64,7 @@ loop_two:
 end:
     pop     rax
 
+    ; Restores backed up registers to initial state
     popf                                                    
     pop rbx                                                     
     pop r15                                                     

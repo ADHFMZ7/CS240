@@ -20,35 +20,34 @@ segment .text
 
 fill:
 
+    ; Backs up registers to guarantee callers data
+    push    rbp
+    mov     rbp,rsp
+    push    rdi                                                    
+    push    rsi                                                    
+    push    rdx                                                    
+    push    rcx                                                    
+    push    r8                                                     
+    push    r9                                                     
+    push    r10                                                    
+    push    r11                                                    
+    push    r12                                                    
+    push    r13                                                    
+    push    r14                                                    
+    push    r15                                                    
+    push    rbx                                                    
+    pushf                                                       
 
-    push rbp
-    mov  rbp,rsp
-    push rdi                                                    ;Backup rdi
-    push rsi                                                    ;Backup rsi
-    push rdx                                                    ;Backup rdx
-    push rcx                                                    ;Backup rcx
-    push r8                                                     ;Backup r8
-    push r9                                                     ;Backup r9
-    push r10                                                    ;Backup r10
-    push r11                                                    ;Backup r11
-    push r12                                                    ;Backup r12
-    push r13                                                    ;Backup r13
-    push r14                                                    ;Backup r14
-    push r15                                                    ;Backup r15
-    push rbx                                                    ;Backup rbx
-    pushf                                                       ;Backup rflags
+    push qword 0 
 
-    push qword 0 ;staying on the boundary
+    
+    mov r15, rdi  ; holds the uninitialized array
+    mov r14, rsi  ; moves length of array into r14
 
-    ; Taking information from parameters
-    mov r15, rdi  ; This holds the first parameter (the array)
-    mov r14, rsi  ; This holds the second parameter (the size of array)
-
-
-    ; let user enter numbers until cntrl + d is entered
-    mov r13, 0 ; for loop counter
+    
+    mov r13, 0 ; loop counter
 fill_loop:
-  cmp r14, r13 ; Ends loop if more numbers are found 
+  cmp r14, r13 ; Ends loop if more than 10 numbers are found 
   jle end 
   mov rax, 0
   mov rdi, long_format
@@ -66,8 +65,9 @@ fill_loop:
 end:
 
     pop rax 
-    mov rax, r13  ; store the number of things in the aray from the counter of for loop
+    mov rax, r13  ; Store length of array in return register
 
+    ; Restores backed up registers to original state
     popf                                                        
     pop rbx                                                     
     pop r15                                                     

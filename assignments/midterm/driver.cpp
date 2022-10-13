@@ -22,4 +22,6 @@ int main()
     }
 
     printf("%s\n", "Program exited, thank you for using my program");
+
+    return 0;
 }

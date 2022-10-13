@@ -7,7 +7,6 @@
 
 extern printf
 extern scanf
-extern islong
 
 global fill
 
@@ -58,11 +57,6 @@ fill_loop:
     cdqe
     cmp rax, -1  ; Ends loop if EOF character is found 
     je end
-
-    mov rdi, rax
-    call islong
-    cmp rax, -1
-
 
     pop r12
     je end 

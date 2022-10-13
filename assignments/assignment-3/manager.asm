@@ -33,9 +33,7 @@ start:
   push  r15
   push  rbx
   pushf
-  jmp   init 
-
-init:
+  push  qword 0
   push  qword 0
   mov   rax,  0
   mov   rdi,  array

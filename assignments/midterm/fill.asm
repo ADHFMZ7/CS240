@@ -50,7 +50,7 @@ mov r14, rsi  ; This holds the second parameter (the size of array)
 mov r13, 0 ; for loop counter
 beginLoop:
   cmp r14, r13 ; we want to exit loop when we hit the size of array
-  jge outOfLoop
+  jle outOfLoop
   mov rax, 0
   mov rdi, long_format
   push qword 0

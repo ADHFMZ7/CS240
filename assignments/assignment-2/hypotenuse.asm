@@ -56,15 +56,19 @@ input:
   mov   rdi,  prompt  
   call printf
 
-  mov   rdi,  s_form
+  ;make space for 2 strings
   sub   rsp,  2048
-  mov   rsi,  [rsp]
+  mov   rax,  0 
+  mov   rdi,  s_form
+  mov   rsi,  rsp
+  mov   r15,  rsp
   call  scanf
 
   mov   r10,  rax
   mov   rdi,  s_form
   mov   rsi,  rax
   call  printf
+
   add   rsp,  2048 
 ;========
 end:

@@ -13,7 +13,7 @@ g++ -c -Wall -no-pie -m64 -std=c++17 -o display.o display.cpp
 
 g++ -c -Wall -m64 -no-pie -o driver.o driver.cpp -std=c++17
 
-g++ -m64 -no-pie -o output manager.o control.o fill.o driver.o display.o -std=c++17
+g++ -m64 -no-pie -o output manager.o fill.o driver.o display.o -std=c++17
 
 ./output
 

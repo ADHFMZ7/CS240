@@ -41,7 +41,7 @@ reverse:
     mov     r12,    0
 
 loop:
-    cmp,    r12,    r13
+    cmp    r12,    r13
     jle     terminate
     push    [r14+8*r12]
     inc     r12
@@ -50,7 +50,7 @@ loop:
 terminate:
     mov     r12,    0
 loop_two:
-    cmp,    r12,    r13
+    cmp    r12,    r13
     jle     end
     pop     rax
     mov     [r15+8*r12],    rax

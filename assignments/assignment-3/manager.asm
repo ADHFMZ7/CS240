@@ -46,7 +46,7 @@ loop:
   cdqe
   cmp   rax,  -1
   je    out
-  mov   r8m   [rsp]
+  mov   r8,   [rsp]
   mov   [r13+8*r14], r8
   inc   r14
   pop   rax

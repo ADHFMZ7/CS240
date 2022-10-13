@@ -1,7 +1,7 @@
 
 extern printf
 extern scanf
-extern fill
+
 
 section .data
 
@@ -36,13 +36,26 @@ start:
   jmp   init 
 
 init:
+  mov   r13,  array
+  mov   r14,  0   ; initialize r14 with zero to count the current size of the array
+
+
+loop:
 
   mov   rax,  0
-  mov   rdi,  array
-  mov   rsi,  64
-  call  fill
-  mov   r15,  rax 
-  pop   rax 
+  mov   rdi,  int_form
+  push  qword 0
+  add   rsp,  8
+  mov   rsi,  rsp
+  call  scanf
+  cdqe
+  cmp   rax,  -1
+  je    out
+  pop 
+  mov   [r13+8*r14], r8 ; Find a way to declare memory and then add this to the offset
+  inc   r14
+  jmp   loop
+
 
 out:
 

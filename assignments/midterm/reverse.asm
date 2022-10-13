@@ -39,24 +39,24 @@ reverse:
     mov     r14,    rsi ; Array a
     mov     r13,    rdx ; Length
 
-    mov     r12,    0
+    mov     rcx,    0
 
 loop:
-    cmp     r12,    r13
+    cmp     rcx,    r13
     jge     terminate 
-    mov     rcx,    [r14 + 8 * r12]
-    push    rcx
-    inc     r12
+    mov     rax,    [r14 + 8 * rcx]
+    push    rax
+    inc     rcx 
     jmp     loop
 
 terminate:
-    mov     r12,    0
+    mov     rcx,    0
 loop_two:
-    cmp     r12,    r13
+    cmp     rcx,    r13
     jge     end
-    pop     rcx
-    mov     [r15 + 8*r12],  rcx
-    inc     r12
+    pop     rax
+    mov     [r15 + 8*rcx],  rax
+    inc     rcx
 
 end:
     pop     rax

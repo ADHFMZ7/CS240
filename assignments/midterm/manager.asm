@@ -11,6 +11,7 @@ extern scanf
 extern fill
 extern reverse
 extern display
+extern islong
 
 section .data
 

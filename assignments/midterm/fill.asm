@@ -7,6 +7,7 @@
 
 extern printf
 extern scanf
+extern islong
 
 global fill
 
@@ -47,20 +48,27 @@ fill:
     
     mov r13, 0 ; loop counter
 fill_loop:
-  cmp r14, r13 ; Ends loop if more than 10 numbers are found 
-  jle end 
-  mov rax, 0
-  mov rdi, long_format
-  push qword 0
-  mov rsi, rsp
-  call scanf
-  cdqe
-  cmp rax, -1  ; Ends loop if EOF character is found 
-  pop r12
-  je end 
-  mov [r15 + 8*r13], r12  
-  inc r13  ;increment loop counter
-  jmp fill_loop
+    cmp r14, r13 ; Ends loop if more than 10 numbers are found 
+    jle end 
+    mov rax, 0
+    mov rdi, long_format
+    push qword 0
+    mov rsi, rsp
+    call scanf
+    cdqe
+    cmp rax, -1  ; Ends loop if EOF character is found 
+    je end
+
+    mov rdi, rax
+    call islong
+    cmp rax, -1
+
+
+    pop r12
+    je end 
+    mov [r15 + 8*r13], r12  
+    inc r13  ;increment loop counter
+    jmp fill_loop
 
 end:
 

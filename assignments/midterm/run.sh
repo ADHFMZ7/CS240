@@ -13,9 +13,11 @@ nasm -f elf64 -l reverse.lis -o reverse.o reverse.asm
 
 g++ -g -c -Wall -no-pie -m64 -std=c++17 -o display.o display.cpp
 
+g++ -g -c -Wall -no-pie -m64 -std=c++17 -o islong.o islong.cpp
+
 g++ -g -c -Wall -m64 -no-pie -o driver.o driver.cpp -std=c++17
 
-g++ -g -m64 -no-pie -o output manager.o fill.o driver.o reverse.o display.o -std=c++17
+g++ -g -m64 -no-pie -o output manager.o fill.o driver.o islong.o reverse.o display.o -std=c++17
 
 ./output
 

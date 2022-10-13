@@ -57,15 +57,15 @@ input:
   call printf
 
   mov   rdi,  s_form
+  sub   rsp,  2048
+  mov   rsi,  [rsp]
   call  scanf
 
-  ;mov   r10,  rax
-  mov   rsi,  rax
-
+  mov   r10,  rax
   mov   rdi,  s_form
+  mov   rsi,  rax
   call  printf
-
-
+  add   rsp,  2048 
 ;========
 end:
 

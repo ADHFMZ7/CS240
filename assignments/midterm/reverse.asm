@@ -57,6 +57,7 @@ loop_two:
     pop     rax
     mov     [r15 + 8*rcx],  rax
     inc     rcx
+    jmp     loop_two
 
 end:
     pop     rax

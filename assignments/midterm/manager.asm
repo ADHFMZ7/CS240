@@ -65,7 +65,7 @@ start:
     push qword 0
     mov rax, 0
     mov rdi, a 
-    mov rsi, max
+    mov rsi, 10
     call fill
     mov r15, rax
     pop rax

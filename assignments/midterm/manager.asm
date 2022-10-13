@@ -62,13 +62,13 @@ start:
 
     ; Calls the input array module
 
-    push qword 0
-    mov rax, 0
-    mov rdi, a 
-    mov rsi, 10
-    call fill
-    mov r15, rax
-    pop rax
+    push    qword   0
+    mov     rax,    0
+    mov     rdi,    a 
+    mov     rsi,    10
+    call    fill
+    mov     r15,    rax
+    pop     rax
 
     ; Prints display Header 
     push    qword   0
@@ -78,12 +78,12 @@ start:
     pop     rax
 
     ; Calls display module
-    push qword 0
-    mov rax, 0
-    mov rdi, a
-    mov rsi, r15
-    call display
-    pop rax
+    push    qword   0
+    mov     rax,    0
+    mov     rdi,    a
+    mov     rsi,    r15
+    call    display
+    pop     rax
 
     ;Prints remainint 3 strings
     push    qword   0
@@ -106,7 +106,23 @@ start:
     pop     rax
 
     ; Calls the reverse module
+    push    qword   0
+    mov     rax,    0
+    mov     rdi,    b 
+    mov     rsi,    a 
+    mov     rdx,    r15 
+    call reverse
+    pop     rax
 
+    ; Calls display module on reversed array
+    push    qword   0
+    mov     rax,    0
+    mov     rdi,    b
+    mov     rsi,    r15
+    call    display
+    pop     rax
+
+    mov     
 
     pop     rax
 

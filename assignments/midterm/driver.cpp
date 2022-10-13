@@ -18,7 +18,7 @@ int main()
     printf("%s\n", "The driver function recieved and array whose first 3 numbers are: ");
     for (int i = 0; i < 3; i++)
     {
-        printf("%ld", result[i]);
+        printf("%ld\n", result[i]);
     }
 
     printf("%s\n", "Program exited, thank you for using my program");

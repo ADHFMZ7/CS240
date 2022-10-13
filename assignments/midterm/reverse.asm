@@ -44,8 +44,9 @@ reverse:
 loop:
     cmp     r12,    r13
     jle     end
-    mov     rax,            [r14 + (r13 - 1 - r12)]
-    mov     [r15 + 8*r12],  rax
+    mov     rax,    r13-1-r12
+    mov     rcx,    [r14 + 8 * rax]
+    mov     [r15 + 8*r12],  rcx
 
     inc     r12
     jmp     loop

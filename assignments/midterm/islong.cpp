@@ -1,6 +1,6 @@
 #include <string>
 
-extern "C" int islong(char arr[], int len);
+extern "C" int islong(char arr[]);
 
 int islong(char arr[])
 {

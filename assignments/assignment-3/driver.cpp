@@ -14,13 +14,13 @@
 
 #include <stdio.h>
 
-extern "C" double start();
+extern "C" void start();
 
 int main()
 {
-  printf("%s\n", "Welcome to Hypotenuse by Ahmad Aldasouqi.");
+  printf("%s\n", "Welcome to assignment 3 by Ahmad Aldasouqi.");
 
-  printf("The driver module received this float number %f and will keep it.\n", start());
+  start();
 
   printf("%s\n", "Program exited, thank you for using my program");
 }

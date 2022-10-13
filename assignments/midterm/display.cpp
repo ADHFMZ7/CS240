@@ -9,6 +9,7 @@
 
 extern "C" void display(long arr[], int size);
 
+// Prints every number in the array
 void display(long* arr, int size)
 {
     for (int i = 0; i < size; i++)

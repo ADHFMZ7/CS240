@@ -122,9 +122,8 @@ start:
     call    display
     pop     rax
 
-
-
     pop     rax
+    mov     rax,    b
 
     popf                                                    
     pop rbx                                                     

@@ -7,9 +7,9 @@
 
 #include <stdio.h>
 
-extern "C" void Display(long arr[], int size);
+extern "C" void display(long arr[], int size);
 
-void Display(long arr[], int size)
+void display(long arr[], int size)
 {
     for (int i = 0; i < size; i++)
     {

@@ -10,6 +10,7 @@ extern printf
 extern scanf
 extern fill
 extern reverse
+extern display
 
 section .data
 
@@ -81,7 +82,7 @@ start:
     mov rax, 0
     mov rdi, a
     mov rsi, r15
-    call Display
+    call display
     pop rax
 
     ;Prints remainint 3 strings

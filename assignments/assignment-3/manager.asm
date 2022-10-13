@@ -36,7 +36,7 @@ start:
   jmp   init 
 
 init:
-
+  push  qword 0
   mov   rax,  0
   mov   rdi,  array
   mov   rsi,  64

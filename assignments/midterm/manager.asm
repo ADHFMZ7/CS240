@@ -64,7 +64,7 @@ start:
 
     push    qword   0
     mov     rax,    0
-    mov     rdi,    b 
+    mov     rdi,    a 
     mov     rsi,    10
     call    fill
     mov     r15,    rax
@@ -117,7 +117,7 @@ start:
     ; Calls display module on reversed array
     push    qword   0
     mov     rax,    0
-    mov     rdi,    a
+    mov     rdi,    b
     mov     rsi,    r15
     call    display
     pop     rax

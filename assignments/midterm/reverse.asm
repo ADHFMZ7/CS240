@@ -34,27 +34,22 @@ reverse:
 
     push    qword   0
 
-    mov     r15,    rdi
-    mov     r14,    rsi
-    mov     r13,    rdx
+    ; Store input parameters
+    mov     r15,    rdi ; Array b
+    mov     r14,    rsi ; Array a
+    mov     r13,    rdx ; Length
 
     mov     r12,    0
 
 loop:
-    cmp    r12,    r13
-    jle     terminate
-    push    qword [r14+8*r12]
+    cmp     r12,    r13
+    jle     end
+    mov     rax,            [r14 + (r13 - 1 - r12)]
+    mov     [r15 + 8*r12],  rax
+
     inc     r12
     jmp     loop
 
-terminate:
-    mov     r12,    0
-loop_two:
-    cmp    r12,    r13
-    jle     end
-    pop     rax
-    mov     [r15+8*r12],    rax
-    jmp     loop_two
 
 end:
     pop     rax

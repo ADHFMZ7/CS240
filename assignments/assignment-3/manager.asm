@@ -33,21 +33,25 @@ start:
   push  r15
   push  rbx
   pushf
-  jmp   loop 
+  jmp   init 
+
+init:
+
+  mov   r14,  0   ; initialize r14 with zero to count the current size of the array
 
 
 loop:
 
   mov   rax,  0
   mov   rdi,  int_form
-  sub   rsp,  1024
+  push  qword 0
   mov   rsi,  rsp
   call  scanf
   cdqe
   cmp   rax,  -1
   je    out
   mov   r8,   [rsp]
-  mov   [r13+8*r14], r8
+  mov   [r13+8*r14], r8 ; Find a way to declare memory and then add this to the offset
   inc   r14
   pop   rax
   jmp   loop

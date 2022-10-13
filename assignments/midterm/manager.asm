@@ -14,6 +14,7 @@ extern reverse
 section .data
 
 max     dw      10
+
 prompt db      "Please enter integers separated by ws and press <enter><control+d> to terminate inputs.", 10, 0
 str2    db      "You entered: ", 10, 0
 str3    db      "The array has %d long integers", 10, 0
@@ -22,8 +23,8 @@ str5    db      "The second array holds these values:", 10, 0
 
 section .bss
 
-a       resq    max
-b       resq    max
+a       resq    10 
+b       resq    10 
 
 section .text
 

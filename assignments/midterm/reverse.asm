@@ -43,7 +43,7 @@ reverse:
 loop:
     cmp    r12,    r13
     jle     terminate
-    push    [r14+8*r12]
+    push    qword [r14+8*r12]
     inc     r12
     jmp     loop
 

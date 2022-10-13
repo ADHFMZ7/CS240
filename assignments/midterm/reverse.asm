@@ -43,7 +43,7 @@ reverse:
 
 loop:
     cmp     r12,    r13
-    jle     terminate 
+    jge     terminate 
     mov     rcx,    [r14 + 8 * r12]
     push    rcx
     inc     r12
@@ -53,7 +53,7 @@ terminate:
     mov     r12,    0
 loop_two:
     cmp     r12,    r13
-    jle     end
+    jge     end
     pop     rcx
     mov     [r15 + 8*r12],  rcx
     inc     r12

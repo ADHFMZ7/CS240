@@ -5,6 +5,17 @@
 // Section TuTh 8-10am
 ///////////////////////////////////////
 
+#include <stdio.h>
+
+extern "C" void Display(long arr[], int size);
+
+void Display(long arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d\n", arr[i]);
+    }
+}
 
 
 

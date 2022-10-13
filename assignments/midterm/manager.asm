@@ -61,6 +61,14 @@ start:
 
     ; Calls the input array module
 
+    push qword 0
+    mov rax, 0
+    mov rdi, a 
+    mov rsi, max
+    call fill
+    mov r15, rax
+    pop rax
+
     ; Prints display Header 
     push    qword   0
     mov     rax,    0
@@ -69,7 +77,12 @@ start:
     pop     rax
 
     ; Calls display module
-
+    push qword 0
+    mov rax, 0
+    mov rdi, a
+    mov rsi, r15
+    call Display
+    pop rax
 
     ;Prints remainint 3 strings
     push    qword   0

@@ -9,7 +9,7 @@ int_form db "%ld", 0
 
 section .bss
 
-
+  array resq  64
 
 section .text
 
@@ -36,7 +36,7 @@ start:
   jmp   init 
 
 init:
-
+  mov   r13,  array
   mov   r14,  0   ; initialize r14 with zero to count the current size of the array
 
 

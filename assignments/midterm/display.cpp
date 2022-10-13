@@ -13,7 +13,7 @@ void Display(long arr[], int size)
 {
     for (int i = 0; i < size; i++)
     {
-        printf("%d\n", arr[i]);
+        printf("%ld\n", arr[i]);
     }
 }
 

@@ -46,7 +46,8 @@ loop:
   mov   rdi,  int_form
   push  qword 0
 ;  add   rsp,  8
-  mov   rsi,  rsp+8
+  mov   rsi,  rsp
+  add   rsi,  8
   call  scanf
   cdqe
   cmp   rax,  -1

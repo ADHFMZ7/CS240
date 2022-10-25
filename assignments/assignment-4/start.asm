@@ -24,7 +24,7 @@ _start:
 
   syscall
 
-  mov   rax,  0x04
-  mov   rdi,  0x41
+  mov   rax,  0x3c
+  mov   rdi,  0x00
 
   syscall

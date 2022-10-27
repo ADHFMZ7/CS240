@@ -12,15 +12,15 @@
 global _start
 
 segment .data
-  name    db  "Ahmad", 10
+  welcome    db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
 
 segment .text
 
 _start:
 
   mov   rax,  0x01
-  mov   rsi,  name 
-  mov   rdx,  6
+  mov   rsi,  welcome 
+  mov   rdx,  47 
 
   syscall
 

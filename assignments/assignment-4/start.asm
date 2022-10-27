@@ -44,7 +44,7 @@ _start:
   ; goodbye message
   mov   rax,  0x01
   mov   rsi,  goodbye
-  mov   mrd,  22
+  mov   rdx,  22
   syscall
 
   ; exits program using 'exit' syscall

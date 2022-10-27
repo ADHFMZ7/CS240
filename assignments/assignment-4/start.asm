@@ -8,6 +8,23 @@
 ;======================================;
 
 
+; Raw Assembly Notes
+;
+; We use system calls to the OS to accomplish
+; tasks such as i/o
+;
+; a full list of linux system calls can be found at 
+; https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md
+;
+; rax register holds the number of the systemcall
+; the
+;
+;
+;
+;
+;
+;
+
 
 global _start
 
@@ -30,6 +47,10 @@ _start:
   ; Show time in tics
 
   ; input a float number in degrees
+
+  mov   rax,  0x00
+  xor   rsi,  rsi
+  mov   rdx,  memory
 
   ; output the same number for confirmation
 

@@ -36,7 +36,7 @@ segment .data
   newline    db  10
   goodbye    db  "Have a nice day. Bye!", 10 
 
-  test       dq  90.0
+  test       dq  0x5A
 
 segment .bss
 

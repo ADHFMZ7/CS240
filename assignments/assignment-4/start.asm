@@ -21,6 +21,10 @@
 ;
 
 global _start
+extern degtorad
+extern ftoa
+extern stringtof
+extern cos
 
 segment .data
   welcome    db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
@@ -42,20 +46,44 @@ _start:
 
   ; prints welcome message using 'write' syscall
   mov   rax,  0x01
+  mov   rdi,  0x01
   mov   rsi,  welcome 
   mov   rdx,  47 
   syscall
 
-  ; Show time in tics
+  ;print string before displaying time
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  time
+  mov   rdx,  47 
+
+  ;load current time into rax register 
+  cpuid
+  rdtsc
+
+  ;convert time to a float
 
   ; input a float number in degrees
 
-  ;;
-  mov   rax,  0x00
-  xor   rsi,  rsi
-  mov   rdx,  memory
+  ;; prints prompt to input angle
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  prompt
+  mov   rdx,  50
+
+  ;; make space for string
+;  sub   rsp,  1024
+  ;; 
+;  mov   rax,  0x00
+;  xor   rdi,  rdi
+;  mov   rsi,  [rsp]
+;  mov   rdx,  10
+
+  ;temp for testing purposes
+  mov   xmm0, 90.0
 
   ; output the same number for confirmation
+  
 
   ; convert the number degrees -> radians (mul by pi/180)
   

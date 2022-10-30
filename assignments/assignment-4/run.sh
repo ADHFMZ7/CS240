@@ -11,14 +11,17 @@
 #==================================
 #
 # compiles/assembles source files to object files
+nasm -f elf64 -o cos.o cos.o
 nasm -f elf64 -o degtorad.o degtorad.asm
-g++ -c -m64 -Wall -fno-pie -no-pie -o main.o main.cpp -std=c++17
+nasm -f elf64 -o ftoa.o ftoa.asm
+nasm -f elf64 -o stof.o stof.asm
+nasm -f elf64 -o degtorad.o degtorad.asm
 #
 #links files into a binary
-g++ -g -Wall -no-pie main.o degtorad.o -o output 
+g++ -g -Wall -no-pie start.o degtorad.o ftoa.o stof.o -o output 
 #
 # runs binaries
 ./output
 #
 # cleanup
-rm *.o
+rm *.o *.lis

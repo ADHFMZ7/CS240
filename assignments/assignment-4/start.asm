@@ -36,6 +36,8 @@ segment .data
   newline    db  10
   goodbye    db  "Have a nice day. Bye!", 10 
 
+  test       db  90.0
+
 segment .bss
 
   
@@ -80,7 +82,7 @@ _start:
 ;  mov   rdx,  10
 
   ;temp for testing purposes
-  movsd xmm0, 90.0
+  movsd xmm0, [test]
 
   ; output the same number for confirmation
   

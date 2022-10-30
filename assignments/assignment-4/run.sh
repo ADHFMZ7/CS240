@@ -11,14 +11,14 @@
 #==================================
 #
 # compiles/assembles source files to object files
-nasm -f elf64 -o cos.o cos.o
+nasm -f elf64 -o cos.o cos.asm
 nasm -f elf64 -o degtorad.o degtorad.asm
 nasm -f elf64 -o ftoa.o ftoa.asm
 nasm -f elf64 -o atof.o atof.asm
 nasm -f elf64 -o degtorad.o degtorad.asm
 #
 #links files into a binary
-g++ -g -Wall -no-pie start.o degtorad.o ftoa.o atof.o -o output 
+g++ -g -Wall -no-pie start.o degtorad.o ftoa.o atof.o cos.o -o output 
 #
 # runs binaries
 ./output

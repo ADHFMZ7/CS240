@@ -1,76 +1,70 @@
+; *******************************************************************************************************************************
+;Function name:  atof
+; This function takes a char pointer of ascii representation of a float number and returns an IEEE754 float
+;
+; Copyright (c) 2022 Chandra Lindy
+;
+; This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+; as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+; of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License along with this program.
+; If not, see <https://www.gnu.org/licenses/>.
+; *******************************************************************************************************************************
 
-;************************************************************************************************************************
-;Program name: "atolong".  This program accepts an array of char and converts that array to its corresponding integer   *
-;value.  This is a library function not specific to any one program.  Copyright (C) 2018  Floyd Holliday                *
-;This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public      *
-;License version 3 as published by the Free Software Foundation.  This program is distributed in the hope that it will  *
-;be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  *
-;PURPOSE.  See the GNU General Public License for more details.  A copy of the GNU General Public License v3 is         *
-;available here:  <https://www.gnu.org/licenses/>.                                                                      *
-;************************************************************************************************************************
-
+;================================================================================================================================
 ;Author information
-;   Author name: Floyd Holliday
-;   Author's email: holliday@fullerton.edu
+;  Author name: Chandra Lindy
+;  Author email: chandra.lindy@csu.fullerton.edu
+;
+;Program information
+;  Function name: atof
+;  Programming languages: Assembly x86-64
+;  Date program began: 2022 October 27th
+;  Date of last update: 2022 October 28th
+;  Date of reorganization of comments: 2022 October 29th
+;  Files in this function: atof.asm
+;  Status: Finished.  The program was tested extensively with no errors on an Ubuntu 20.04 native installation
+;
+;This file
+;   File name: atof.asm
+;   Language: X86 with Intel syntax.
+;   Max page width: 129 columns
+;   Assemble: nasm -f elf64 -l atof.lis -o atof.o atof.asm
+;   Link: <as appropriate>
+;   Purpose: Convert ascii representation of floats into IEEE754 float
+;
+;Signature:  double atof(char * ascii_float)
+;
+;Disclaimer:  This function does not validate input!
+;================================================================================================================================
 
-;Function information
-;   Function name: atolong
-;   Programming language: X86
-;   Language syntax: Intel
-;   Function prototype:  long int atolong (char * number_string); 
-;   Reference: None
-;   Input parameter: The char array passed to this function must contain valid integral data.
-;   Output parameter: A long integer that is faithfully represented by the incoming parameter.
+global atof
+; external functions
 
-;Assemble: nasm -f elf64 -o atol.o -l atol.lis atol.asm
-
-;Date development began: 2018-March-28
-;Date comments restructured: 2022-July-16
-
-;Names
-;   The function "atolong" was intended to be called atol, however there already is a function in the C++ standard library
-;   with that name.  To avoid any possible conflict this function received the longer name, namely: atolong.  A simple web
-;   search will produce lots of information about the original atol.
-
-;===== Begin executable code section ====================================================================================
-
-;Assembler directives
-base_number equ 10                      ;10 base of the decimal number system
-ascii_zero equ 48                       ;48 is the ascii value of '0'
+; constant declarations
+period equ 46
 null equ 0
-minus equ '-'
-decimal_point equ '.'
 
-;Global declaration for linking files.
-global stringtof                          ;This makes atolong callable by functions outside of this file.
+segment .data
+; initialized variable declarations
 
-segment .data                           ;Place initialized data here
-   ;This segment is empy
+segment .bss
+; variable declarations
 
-segment .bss                            ;Declare pointers to un-initialized space in this segment.
-   ;This segment is empty
-   ; [ 12.34, 23.5] resq (64 bits)
-   ; ['a', 'b', 'c'] (8 bits (1 byte) per element)
-   float_as_string_arr resb 100
+segment .text
 
-;==============================================================================================================================
-;===== Begin the executable code here.
-;==============================================================================================================================
-segment .text                           ;Place executable instructions in this segment.
+atof:
 
-stringtof:                                ;Entry point.  Execution begins here.
-
-;The next two instructions should be performed at the start of every assembly program.
-push rbp                                ;This marks the start of a new stack frame belonging to this execution of this function.
-mov  rbp, rsp                           ;rbp holds the address of the start of this new stack frame.
-;The following pushes are performed for safety of the data that may already be in the remaining GPRs.
-;This backup process is especially important when this module is called by another asm module.  It is less important when called
-;called from a C or C++ function.
-push rbx
-push rcx
-push rdx
+;Prolog ===== Insurance for any caller of this assembly module ========================================================
+push rbp
+mov  rbp,rsp
 push rdi
 push rsi
+push rdx
+push rcx
 push r8
 push r9
 push r10
@@ -79,107 +73,137 @@ push r12
 push r13
 push r14
 push r15
+push rbx
 pushf
-; save the arguments
-movsd xmm15, xmm0
-; multiply by 10 until we get this -> 15623
 
-xorpd xmm12, xmm12 ; just to have a 0.0 to compare
-; 156.23 -> 15623
-mov r11, 0
-whileLoop:
-    ; 156.23 - 156
-    ; original_num - int_converted_num
-    ; original_num - the original float is in xmm15
-    cvtsd2si r15, xmm15 ; original_num
-    cvtsi2sd xmm14, r15 ; int_converted_num
-    
-    movsd xmm13, xmm15
-    subsd xmm13, xmm14 ; xmm13 = original_num - int_converted_num
+; ********** program logic begins **********
+; save arguments, start counter and flag
+mov rbx, rdi  ; string value to be converted
+mov r14, 0 ; negative flag
+mov r12, 0 ; character counter
 
-    ucomisd xmm13, xmm12
-    je OutOfLoop
-    ; else
-    mov rax, 10
-    cvtsi2sd xmm11, rax
-    ; 156.23 * 10 -> 1562.3
-    mulsd xmm15, xmm11
-    inc r11
-    jmp whileLoop
-OutOfLoop:
-; 15623 as integer, r11 = 2
-; 15623/10 = 1562 R3
-; 1562/10 = 156 R2
-; 15 R6
-; 1 R5
-; 0 R1
+; check for negative values
+cmp byte [rbx], '-'
+jne start
 
-; counter for how many times you divided - r8
-; convert 15623 to a integer
-; continually divide by 10 until we reach 0.
-; (use idiv (rdx the remainder, rax is the quotient))
-; Take the modulus and add 48 to it to get the ascii value
-; push onto the stack
-; decrement r11
-; when r11 is zero push a '.' in ascii on the stack
-; do again until r11 = 0
+inc r14
+inc r12
 
-; for i = r8:
-;    pop the stack and place the character into the char array
+start:
 
+; push integer portion onto stack as ascii values
+peel_integer:
+  cmp byte [rbx + r12], '.'
+  je peel_integer_end
 
+  ; match size for arithmetic operation
+  mov r15b, byte [rbx + r12]
+  cbw
+  cwde
+  cdqe
 
-; condition
-; when "it" equals to zero
+  ; push value onto stack
+  push qword 0
+  mov [rsp], r15
+  inc r12
+  jmp peel_integer
 
+peel_integer_end:
+; integer value (digist to the left of decimal) are on the stack
 
-; printf("...")
-; ftoa(float) -> string
+; get ready to convert integer value
+; start a multiplier
+mov rax, 1
+cvtsi2sd xmm11, rax
 
-; 156.23 -> "156.23"
-; need an array DONE
-; 156.23 
-; multiply by 10 until we get this -> 15623
-; 156.23-> 156 -> 156.0
-; 156.23 - 156.0 = 0.23
-; 1562.3 -> 1562
-; 1562.3 - 1562 = 0.3
-; 15623.0 - 15623.0 = 0
-; 
-;
+; keep a 10.0 value in a register as the base of our multiplier
+mov rax, 10
+cvtsi2sd xmm12, rax
 
+; make divisor value start at 0.1
+divsd xmm11, xmm12
 
-; divide by how many places we moved decimal
+; start loop with integer digit counter, counting down
+; pop off stack and convert the integer portion of our float
+mov r13, r12 ; make a copy of our counter
 
-; decimal point 156.23
-; set a counter until we hit decimal point
+; if it's a negative value there's one less digit on the stack
+cmp r14, 0
+je continue
 
-; 156.23 - xmm15
-; 56.23
-; divide until under 10 - count how many times we divide
-; 10^counter = 100
-; 1.5623 = 1 (place into the array)
-;
-; 1506.23
-; - 15
-; 06.23
-; 6.23
+sub r13, 1
+
+continue:
+
+; now we're ready to convert our integer portion
+xorpd xmm14, xmm14 ; ready a register to keep a running count
+convert_integer:
+  cmp r13, 0 ; for as many ascii values we have on the stack
+  je convert_integer_end
+
+  pop r15 ; take one out
+  sub r15, '0' ; convert ascii to int
+  cvtsi2sd xmm13, r15 ; convert int to float
+  mulsd xmm11, xmm12 ; multiply our multiplier by our base 10
+  mulsd xmm13, xmm11 ; multiple our integer by our multiplier
+  addsd xmm14, xmm13 ; keep a running count
+
+  dec r13
+  jmp convert_integer
+
+convert_integer_end:
+; xmm14 now holds the integer portion as a float with zeroes to the right side of the decimal
 
 
-; 0.23 / 10 = 0 - once we hit this point, we are at a decimal
-; [1, 5, 6]
+; now we work on the decimal portion
+; start a divisor with 1 as starting value
+xorpd xmm11, xmm11
+mov rax, 1
+cvtsi2sd xmm11, rax
 
+inc r12  ; to move passed decimal point
+xorpd xmm15, xmm15 ; ready a register for a running count
+convert_decimal:
+  ; are we at the end of the string yet?
+  cmp byte [rbx + r12], null
+  je convert_decimal_end
 
+  ; match size
+  mov r15b, byte [rbx + r12]
+  cbw
+  cwde
+  cdqe
 
-; The rest of the numbers
+  sub r15, '0' ; convert ascii to int
+  cvtsi2sd xmm10, r15 ; conver int to float
+  mulsd xmm11, xmm12 ; multiply our divisor by our base 10
+  divsd xmm10, xmm11 ; divide our number with our divisor
+  addsd xmm15, xmm10 ; keep a running count
 
-; take something from xmm0 (float)
+  inc r12
+  jmp convert_decimal
 
+convert_decimal_end:
+; xmm15 now holds the decimal portion of our float
 
-; end of the function -> return a string in rax
-;==================================================================================================================================
-;Epilogue: restore data to the values held before this function was called.
+; all we have to do now is combine the two parts
+addsd xmm14, xmm15 ; add the decimal portion to the integer portion
+movsd xmm0, xmm14 ; load value ready for return to caller
+
+; check if it's a negative value
+cmp r14, 0
+je end
+
+; make it negative if it is
+mov rax, -1
+cvtsi2sd xmm9, rax
+mulsd xmm0, xmm9
+
+end:
+
+;===== Restore original values to integer registers ===================================================================
 popf
+pop rbx
 pop r15
 pop r14
 pop r13
@@ -188,13 +212,10 @@ pop r11
 pop r10
 pop r9
 pop r8
+pop rcx
+pop rdx
 pop rsi
 pop rdi
-pop rdx
-pop rcx
-pop rbx
-pop rbp                       ;Now the system stack is in the same state it was when this function began execution.
-ret                           ;Pop a qword from the stack into rip, and continue executing..
-;========== End of module atol.asm ================================================================================================
-;========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1=========2=========3**
+pop rbp
 
+ret

@@ -1,6 +1,6 @@
 ; *******************************************************************************************************************************
-;Function name:  cos
-; This function calculates cosine
+;Function name: scan
+; This function scans stdin for user input
 ;
 ; Copyright (c) 2022 Chandra Lindy
 ;
@@ -20,45 +20,46 @@
 ;  Author email: chandra.lindy@csu.fullerton.edu
 ;
 ;Program information
-;  Function name: cos
+;  Function name: scan
 ;  Programming languages: Assembly x86-64
-;  Date program began: 2022 October 28th
-;  Date of last update: 2022 October 28th
+;  Date program began: 2022 October 27th
+;  Date of last update: 2022 October 27th
 ;  Date of reorganization of comments: 2022 October 29th
-;  Files in this function: cos.asm
+;  Files in this function: scan.asm
 ;  Status: Finished.  The program was tested extensively with no errors on an Ubuntu 20.04 native installation
 ;
 ;This file
-;   File name: cos.asm
+;   File name: scan.asm
 ;   Language: X86 with Intel syntax.
 ;   Max page width: 129 columns
-;   Assemble: nasm -f elf64 -l cos.lis -o cos.o cos.asm
+;   Assemble: nasm -f elf64 -l scan.lis -o scan.o scan.asm
 ;   Link: <as appropriate>
-;   Purpose: Calculate cosine
+;   Purpose: scan stdin one character at a time until \n is found
 ;
-;Signature:  double cos(double value)
+;Signature:  void scan(char * buffer, int size)
 ;
 ;Disclaimer:  This function does not validate input!
 ;================================================================================================================================
 
-global cos
-; external functions
+global scan
 
 ; constant declarations
+stdin equ 0
+sys_read equ 0
+new_line equ 10
+
 
 segment .data
-; initialized variable declarations
-d_zero dq 0.0
-d_one dq 1.0
-d_two dq 2.0
-d_neg_one dq -1.0
 
 segment .bss
+
 ; variable declarations
+one_char resb 1
+
 
 segment .text
 
-cos:
+scan:
 
 ;Prolog ===== Insurance for any caller of this assembly module ========================================================
 push rbp
@@ -79,53 +80,43 @@ push rbx
 pushf
 
 ; ********** program logic begins **********
-; save arguments
-movsd xmm8, xmm0 ; x in our equation
 
-; implement t(n+1) = T(n) * -1 (x^2)/((2n+1)*(2n+2))
-; over 10,000,000 iterations = cos(x)
+; save arguments into more stable registers
+mov r15, rdi  ; char pointer
+mov r14, rsi  ; max n char
+add r14, 2 ; to account for newline and null terminator
 
-; T(n) - 1st term
-mov rax, 1
-cvtsi2sd xmm9, rax
+; start counter
+mov r13, 0
+read:
 
-; n
-movsd xmm10, [d_zero]
+; get one char from stdin
+mov rax, sys_read
+mov rdi, stdin
+mov rsi, one_char
+mov rdx, 1
+syscall
 
-; sequence sum
-movsd xmm15, [d_one]
+; check for a newline
+mov al, byte [one_char]
+cmp al, new_line
+je done
 
-; set counter
-mov r12, 0
-loop:
-  cmp r12, 10000000
-  je end
+; check max n
+inc r13
+cmp r13, r14
+jae read
 
-  ; T(n) * -1
-  mulsd xmm9, [d_neg_one]
-  ; * x^2
-  mulsd xmm9, xmm8
-  mulsd xmm9, xmm8
-  ; / 2n + 1
-  movsd xmm11, xmm10
-  mulsd xmm11, [d_two]
-  addsd xmm11, [d_one]
-  divsd xmm9, xmm11
-  ; / 2n + 2
-  addsd xmm11, [d_one]
-  divsd xmm9, xmm11
+; copy to char pointer
+mov byte [r15], al
+inc r15
+jmp read
 
-  ; add to sequence sum
-  addsd xmm15, xmm9
 
-  ; increment
-  addsd xmm10, [d_one]
-  inc r12
-  jmp loop
-end:
+done:
+; end char pointer with a newline
+mov byte [r15 + r13], al
 
-; load return value
-movsd xmm0, xmm15
 
 ;===== Restore original values to integer registers ===================================================================
 popf

@@ -10,12 +10,6 @@ global degtorad
 
 degtorad:
 
-  push  xmm14
-  push  xmm15
-
   mulsd xmm0,  constant
-
-  pop   xmm15
-  pop   xmm14
 
   ret

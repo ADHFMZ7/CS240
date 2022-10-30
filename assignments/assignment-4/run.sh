@@ -19,7 +19,7 @@ nasm -f elf64 -o atof.o atof.asm
 nasm -f elf64 -o degtorad.o degtorad.asm
 #
 #links files into a binary
-g++ -g -Wall -no-pie start.o degtorad.o ftoa.o atof.o cos.o -o output 
+g++ -g -Wall -no-pie start.o degtorad.o atof.o cos.o -o output 
 #
 # runs binaries
 ./output

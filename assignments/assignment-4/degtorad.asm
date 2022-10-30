@@ -10,11 +10,12 @@ global degtorad
 
 degtorad:
 
-  movsd xmm15,  xmm0
-  movsd xmm14,  [constant]
+  push  xmm14
+  push  xmm15
 
-  mulsd xmm15,  xmm14
+  mulsd xmm0,  constant
 
-  movsd xmm0,   xmm15
+  pop   xmm14
+  pop   xmm15
 
   ret

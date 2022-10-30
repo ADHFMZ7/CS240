@@ -26,4 +26,4 @@ g++ -nostdlib -g -Wall -no-pie start.o degtorad.o atof.o cos.o -o output
 ./output
 #
 # cleanup
-rm *.o *.lis
+rm *.o

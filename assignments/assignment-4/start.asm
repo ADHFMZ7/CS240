@@ -58,6 +58,7 @@ _start:
   mov   rdi,  0x01
   mov   rsi,  time
   mov   rdx,  47 
+  syscall
 
   ;load current time into rax register 
   cpuid
@@ -72,6 +73,7 @@ _start:
   mov   rdi,  0x01
   mov   rsi,  prompt
   mov   rdx,  50
+  syscall
 
   ;; make space for string
 ;  sub   rsp,  1024

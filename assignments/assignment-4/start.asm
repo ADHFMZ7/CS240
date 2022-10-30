@@ -32,6 +32,10 @@ segment .data
   newline    db  10
   goodbye    db  "Have a nice day. Bye!", 10 
 
+segment .bss
+
+  
+
 segment .text
 
 _start:
@@ -46,6 +50,7 @@ _start:
 
   ; input a float number in degrees
 
+  ;;
   mov   rax,  0x00
   xor   rsi,  rsi
   mov   rdx,  memory

@@ -2,7 +2,7 @@
 
 segment .data
 
-  constant dq 0x3f91df46a0000000 
+  constant dd 0x3C8EFA35
 
 segment .text
 
@@ -15,7 +15,7 @@ degtorad:
 
   mulsd xmm0,  constant
 
-  pop   xmm14
   pop   xmm15
+  pop   xmm14
 
   ret

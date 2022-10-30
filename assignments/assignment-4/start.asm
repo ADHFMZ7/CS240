@@ -19,24 +19,22 @@
 ; rax register holds the number of the systemcall
 ; the
 ;
-;
-;
-;
-;
-;
-
 
 global _start
 
 segment .data
   welcome    db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
-  goodbye    db  "Have a nice day. Bye!", 10 
+  prompt     db  "Please enter an angle in degrees and press enter: " 
+  confirm    db  "You entered "
+  
 
+  time       db  "The current time in tics is "
+  newline    db  10
+  goodbye    db  "Have a nice day. Bye!", 10 
 
 segment .text
 
 _start:
-
 
   ; prints welcome message using 'write' syscall
   mov   rax,  0x01
@@ -55,7 +53,7 @@ _start:
   ; output the same number for confirmation
 
   ; convert the number degrees -> radians (mul by pi/180)
-
+  
   ; Compute cosine of radian number
 
   ; Outputs computed value
@@ -72,3 +70,5 @@ _start:
   mov   rax,  0x3c
   mov   rdi,  0x00
   syscall
+
+

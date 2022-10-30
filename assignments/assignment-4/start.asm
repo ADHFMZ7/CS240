@@ -36,7 +36,7 @@ segment .data
   newline    db  10
   goodbye    db  "Have a nice day. Bye!", 10 
 
-  test       dq  0x5A
+  example    dq  0x5A
 
 segment .bss
 
@@ -82,7 +82,7 @@ _start:
 ;  mov   rdx,  10
 
   ;temp for testing purposes
-  movsd xmm0, [test]
+  movsd xmm0, [example]
 
   ; output the same number for confirmation
   

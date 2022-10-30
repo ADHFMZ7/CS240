@@ -11,6 +11,7 @@
 #==================================
 #
 # compiles/assembles source files to object files
+nasm -f elf64 -o start.o start.asm
 nasm -f elf64 -o cos.o cos.asm
 nasm -f elf64 -o degtorad.o degtorad.asm
 #nasm -f elf64 -o ftoa.o ftoa.asm

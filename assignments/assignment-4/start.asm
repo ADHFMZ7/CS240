@@ -80,7 +80,7 @@ _start:
 ;  mov   rdx,  10
 
   ;temp for testing purposes
-  mov   xmm0, 90.0
+  movsd xmm0, 90.0
 
   ; output the same number for confirmation
   

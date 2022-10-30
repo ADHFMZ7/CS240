@@ -5,6 +5,6 @@ extern "C" float degtorad(float a);
 int main()
 {
 
-  printf("%f\n", degtorad(180));
+  printf("%f\n", degtorad(380)/2.0);
 
 }

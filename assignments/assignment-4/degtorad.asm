@@ -10,7 +10,7 @@ global degtorad
 
 degtorad:
 
-  movss xmm14, constant
+  movss xmm14, [constant]
   mulss xmm0,  xmm14
 
   ret

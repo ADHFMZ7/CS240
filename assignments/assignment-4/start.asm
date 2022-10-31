@@ -29,6 +29,7 @@ segment .data
   time2     db  "The time in seconds is now "
 
   message   db  "The cosine of that degrees is "
+  message2  db  "The equal number in radians is "
 
   newline   db  10
 
@@ -167,6 +168,22 @@ computation:
   mov   rsi,  radians 
   mov   rdx,  r15
   syscall
+
+  ; print a newline
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  newline
+  mov   rdx,  1
+  syscall   
+
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  radians
+  mov   rdx,  31 
+  syscall    
+
+
 
   call cos 
   movsd xmm8, xmm0

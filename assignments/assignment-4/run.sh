@@ -21,7 +21,7 @@ nasm -f elf64 -o scan.o scan.asm
 nasm -f elf64 -o strlen.o strlen.asm
 #
 #links files into a binary
-g++ -nostdlib -g -Wall -no-pie start.o degtorad.o atof.o cos.o ltoa.o strlen.o scan.o -o output 
+g++ -nostdlib -g -Wall -no-pie start.o degtorad.o atof.o cos.o ltoa.o strlen.o scan.o ftoa.o -o output 
 #
 # runs binaries
 ./output

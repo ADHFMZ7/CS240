@@ -28,6 +28,8 @@ segment .data
   time      db  "The current time in tics is "
   time2     db  "The time in seconds is now "
 
+  message   db  "The cosine of that degrees is "
+
   newline   db  10
 
   goodbye   db  "Have a nice day. Bye!", 10 
@@ -148,6 +150,13 @@ computation:
 
   call cos 
   movsd xmm8, xmm0
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  message
+  mov   rdx,  30 
+  syscall    
+
 
   ; Outputs computed value
 

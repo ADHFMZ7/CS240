@@ -37,7 +37,7 @@
 
 
 
-global cosine
+global cos
 
 extern strlen
 
@@ -47,7 +47,7 @@ segment .bss
 
 segment .text
 
-cosine:
+cos:
 
 push rbp
 mov  rbp,rsp

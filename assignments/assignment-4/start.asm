@@ -141,7 +141,7 @@ input:
   ; print the string
   mov   rax,  0x01
   mov   rdi,  0x01
-  mov   rsi,  r14
+  mov   rsi,  buffer 
   mov   rdx,  r15
   syscall
 

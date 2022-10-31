@@ -169,21 +169,21 @@ computation:
   mov   rdx,  r15
   syscall
 
+
+
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  message 
+  mov   rdx,  31 
+  syscall    
+
   ; print a newline
   mov   rax,  0x01
   mov   rdi,  0x01
   mov   rsi,  newline
   mov   rdx,  1
   syscall   
-
-
-  mov   rax,  0x01
-  mov   rdi,  0x01
-  mov   rsi,  radians
-  mov   rdx,  31 
-  syscall    
-
-
 
   call cos 
   movsd xmm8, xmm0

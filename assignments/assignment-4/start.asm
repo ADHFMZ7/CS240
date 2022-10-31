@@ -29,20 +29,21 @@ extern ltoa
 extern strlen
 
 segment .data
-  welcome    db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
-  prompt     db  "Please enter an angle in degrees and press enter: " 
-  confirm    db  "You entered "
+  welcome   db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
+  prompt    db  "Please enter an angle in degrees and press enter: " 
+  confirm   db  "You entered "
   
 
-  time       db  "The current time in tics is "
-  newline    db  10
-  goodbye    db  "Have a nice day. Bye!", 10 
+  time      db  "The current time in tics is "
+  newline   db  10
+  goodbye   db  "Have a nice day. Bye!", 10 
 
-  example    dq  0x5A
+  example   dq  0x5A
 
 segment .bss
 
-  tics resb 50
+  tics      resb 50
+  inputstd  resb  50
 
 segment .text
 
@@ -132,8 +133,36 @@ input:
   ;temp for testing purposes
   movsd xmm0, [example]
 
-  ; output the same number for confirmation
-  
+
+  ; convert the number to a string put it in r14
+  mov   rax,  0
+  mov   rdi,  xmm0 
+  mov   rsi,  inputstr
+  call  ftoa
+
+  ; get the length of the string put it in r15
+
+  mov   rax,  0
+  mov   rdi,  inputstr
+  call  strlen
+  mov   r15,  rax
+
+  ; print the string
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  r14
+  mov   rdx,  r15
+  syscall
+
+
+  ; print a newline
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  newline
+  mov   rdx,  1
+  syscall    
+
 
 
 computation:

@@ -89,8 +89,8 @@ _start:
 
   mov   rax,  0x01
   mov   rdi,  0x01
-  mov   rsi,  r15
-  mov   rdx,  r14
+  mov   rsi,  tics
+  mov   rdx,  r15
   syscall
 
   ;print newline character
@@ -102,6 +102,7 @@ _start:
   syscall
 
   ;prints current time
+
 
   mov   rdi,  r14
   mov   rsi,  tics

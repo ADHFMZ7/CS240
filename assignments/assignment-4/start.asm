@@ -136,7 +136,7 @@ input:
   mov   rdi,  buffer
   mov   rsi,  50
   call  scan
-  mov   rax,  r15
+  mov   r15,  rax 
 
   ; print the string
   mov   rax,  0x01

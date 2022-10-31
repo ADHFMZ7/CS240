@@ -59,7 +59,7 @@ _start:
   mov   rax,  0x01
   mov   rdi,  0x01
   mov   rsi,  time
-  mov   rdx,  47 
+  mov   rdx,  28 
   syscall
 
   ;load current time into r14 register 

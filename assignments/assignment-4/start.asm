@@ -35,6 +35,7 @@ segment .data
 segment .bss
 
   tics      resb  50
+  tics2     resb  50
   inputstd  resb  50
   buffer    resb  50
   buffer2   resb  50
@@ -196,7 +197,7 @@ exit:
   ;convert time in tics to string
   mov   rax,  0
   mov   rdi,  r14
-  mov   rsi,  tics
+  mov   rsi,  tics2
   call  ltoa
   mov   r14,  rax
   ;get length of string for printing
@@ -210,7 +211,7 @@ exit:
 
   mov   rax,  0x01
   mov   rdi,  0x01
-  mov   rsi,  tics
+  mov   rsi,  tics2
   mov   rdx,  r15
   syscall
 
@@ -221,12 +222,6 @@ exit:
   mov   rsi,  newline
   mov   rdx,  1
   syscall
-
-  ;prints current time
-
-  mov   rdi,  r14
-  mov   rsi,  tics
-
 
   ; goodbye message
   mov   rax,  0x01

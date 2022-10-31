@@ -136,7 +136,7 @@ input:
 
   ; convert the number to a string put it in r14
   mov   rax,  0
-  mov   rdi,  [xmm0] 
+  movsd rdi,  xmm0 
   mov   rsi,  inputstr
   call  ftoa
 

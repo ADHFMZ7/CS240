@@ -1,3 +1,9 @@
+;======================================================;
+;This function was used in the program Accurate Cosines;
+; Author: Ahmad Aldasouqi                              ;
+; Contact:  ahmadaldasouqi@csu.fullerton.edu           ;
+;======================================================;
+
 ; *******************************************************************************************************************************
 ;Function name:  ftoa
 ; This function converts IEEE754 float into its ascii representation of the value

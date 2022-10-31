@@ -1,10 +1,8 @@
-;++++++++++++++++++++++++++++++++++++++++++++++++++++++;
-;This function was used as part of a larger program by ;
-; Author: Chandra Lindy                                ;
-; Contact:  chandra.lindy@csu.fullerton.edu            ;
-; Program:  Pure                                       ;
-; Date incorporated:  October 28th, 2022               ;
-;++++++++++++++++++++++++++++++++++++++++++++++++++++++;
+;======================================================;
+;This function was used in the program Accurate Cosines;
+; Author: Ahmad Aldasouqi                              ;
+; Contact:  ahmadaldasouqi@csu.fullerton.edu           ;
+;======================================================;
 
 ;************************************************************************************************************************
 ;Program name: "itoa".  This program accepts a long integer and converts it to the corresponding string representation. *

@@ -1,3 +1,10 @@
+;======================================================;
+;This function was used in the program Accurate Cosines;
+; Author: Ahmad Aldasouqi                              ;
+; Contact:  ahmadaldasouqi@csu.fullerton.edu           ;
+;======================================================;
+
+; Copyright 2022 Diamond Dinh (diamondburned), licensed under the MIT license.
 
 
 global scan

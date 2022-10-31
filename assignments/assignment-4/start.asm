@@ -25,6 +25,8 @@ extern degtorad
 extern ftoa
 extern stringtof
 extern cos
+extern ltoa
+extern strlen
 
 segment .data
   welcome    db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
@@ -40,7 +42,7 @@ segment .data
 
 segment .bss
 
-  
+  tics resb 50
 
 segment .text
 
@@ -60,12 +62,49 @@ _start:
   mov   rdx,  47 
   syscall
 
-  ;load current time into rax register 
+  ;load current time into r14 register 
   cpuid
   rdtsc
+  shl   rdx,  32
+  or    rdx,  rax
+  mov   r14,  rdx   
 
-  ;convert time to a float
+  ;convert time in tics to string
+  mov   rax,  0
+  mov   rdi,  r14
+  mov   rsi,  tics
+  call  ltoa
+  mov   r14,  rax
+  ;get length of string for printing
 
+  mov   rax,  0
+  mov   rdi,  r14
+  call strlen
+
+  ;print string using write syscall
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  r14
+  mov   rdx,  rax
+  syscall
+
+
+
+  ;prints current time
+
+  mov   rdi,  r14
+  mov   rsi,  tics
+
+
+
+
+
+
+
+
+
+input:
   ; input a float number in degrees
 
   ;; prints prompt to input angle
@@ -89,16 +128,32 @@ _start:
   ; output the same number for confirmation
   
 
+
+computation:
+
   ; convert the number degrees -> radians (mul by pi/180)
   
   ; Compute cosine of radian number
 
   ; Outputs computed value
 
+
+
   ; shows number of tics
+
+
+
+
+
+
+
+
+
+exit:
 
   ; goodbye message
   mov   rax,  0x01
+  mov   rdi,  0x01
   mov   rsi,  goodbye
   mov   rdx,  22
   syscall

@@ -27,7 +27,7 @@ extern cos      ;double cos(double value)
 extern ltoa
 extern strlen 
 extern scan     ;long int scan(char* buf, long int buflen)
-extern ator     ;double atof(char * ascii_float)
+extern atof     ;double atof(char * ascii_float)
 
 segment .data
   welcome   db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10

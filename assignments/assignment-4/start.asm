@@ -89,7 +89,13 @@ _start:
   mov   rdx,  rax
   syscall
 
+  ;print newline character
 
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  newline
+  mov   rdx,  1
+  syscall
 
   ;prints current time
 

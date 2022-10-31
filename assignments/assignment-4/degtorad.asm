@@ -11,7 +11,11 @@ global degtorad
 
 degtorad:
 
+  ;need to save contents of xmm14 
+
   movsd xmm14, [constant]
   mulsd xmm0,  xmm14
+
+  ;need to restore contents of xmm14
 
   ret

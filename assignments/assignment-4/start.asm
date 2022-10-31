@@ -85,8 +85,8 @@ _start:
 
   mov   rax,  0x01
   mov   rdi,  0x01
-  mov   rsi,  r14
-  mov   rdx,  rax
+  mov   rsi,  rax
+  mov   rdx,  r14
   syscall
 
   ;print newline character

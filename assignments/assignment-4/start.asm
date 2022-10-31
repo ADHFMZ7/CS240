@@ -154,7 +154,7 @@ computation:
   mov   rax,  0
   movsd xmm0, xmm8 
   call degtorad
-  movsd xmm0, xmm8
+  movsd xmm8, xmm0
 
   call cos 
   movsd xmm8, xmm0

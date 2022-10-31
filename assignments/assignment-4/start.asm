@@ -21,13 +21,13 @@
 ;
 
 global _start
-extern degtorad
-extern ftoa
-extern stringtof
-extern cos
+extern degtorad ;double degtorad(double degrees)
+extern ftoa     ;void ftoa(double value, char * string)
+extern cos      ;double cos(double value)
 extern ltoa
-extern strlen
+extern strlen 
 extern scan     ;long int scan(char* buf, long int buflen)
+extern ator     ;double atof(char * ascii_float)
 
 segment .data
   welcome   db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
@@ -46,6 +46,7 @@ segment .bss
   tics      resb  50
   inputstd  resb  50
   buffer    resb  50
+  buffer2   resb  50
 
 segment .text
 
@@ -110,13 +111,7 @@ _start:
 
 
 
-
-
-
-
-
 input:
-  ; input a float number in degrees
 
   ;; prints prompt to input angle
   mov   rax,  0x01
@@ -124,14 +119,6 @@ input:
   mov   rsi,  prompt
   mov   rdx,  50
   syscall
-
-  ;; make space for string
-;  sub   rsp,  1024
-  ;; 
-;  mov   rax,  0x00
-;  xor   rdi,  rdi
-;  mov   rsi,  [rsp]
-;  mov   rdx,  10
 
   mov   rax,  0
   mov   rdi,  buffer
@@ -155,29 +142,103 @@ input:
   mov   rdx,  1
   syscall    
 
-
-
+  ; convert string to float number
+  mov   rax,  0
+  mov   rdi,  buffer
+  call  atof
+  movsd xmm8,  xmm0
+ 
 computation:
 
   ; convert the number degrees -> radians (mul by pi/180)
-  
-  ; Compute cosine of radian number
+  mov   rax,  0
+  movsd xmm0, xmm8 
+  call degtorad
+  movsd xmm0, xmm8
+
+  call cos 
+  movsd xmm8, xmm0
 
   ; Outputs computed value
 
+  movsd xmm0, xmm8
+  mov   rdi,  buffer2
+  call ftoa
 
+  ; get length of buffer 
+  mov   rax,  0
+  mov   rdi,  buffer2
+  call  strlen
+  mov   r15,  rax 
+
+  ;print buffer 
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  buffer2
+  mov   rdx,  r15
+  syscall
+
+  ; print a newline
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  newline
+  mov   rdx,  1
+  syscall   
+
+exit:
 
   ; shows number of tics
 
+ ;print string before displaying time
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  time
+  mov   rdx,  28 
+  syscall
+
+  ;load current time into r14 register 
+  cpuid
+  rdtsc
+  shl   rdx,  32
+  or    rdx,  rax
+  mov   r14,  rdx   
+
+  ;convert time in tics to string
+  mov   rax,  0
+  mov   rdi,  r14
+  mov   rsi,  tics
+  call  ltoa
+  mov   r14,  rax
+  ;get length of string for printing
+
+  mov   rax,  0
+  mov   rdi,  r14
+  call  strlen
+  mov   r15,  rax 
+
+  ;print string using write syscall
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  tics
+  mov   rdx,  r15
+  syscall
+
+  ;print newline character
+
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  newline
+  mov   rdx,  1
+  syscall
+
+  ;prints current time
 
 
+  mov   rdi,  r14
+  mov   rsi,  tics
 
-
-
-
-
-
-exit:
 
   ; goodbye message
   mov   rax,  0x01

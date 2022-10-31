@@ -79,13 +79,14 @@ _start:
 
   mov   rax,  0
   mov   rdi,  r14
-  call strlen
+  call  strlen
+  mov   r15,  rax 
 
   ;print string using write syscall
 
   mov   rax,  0x01
   mov   rdi,  0x01
-  mov   rsi,  rax
+  mov   rsi,  r15
   mov   rdx,  r14
   syscall
 

@@ -27,6 +27,7 @@ extern stringtof
 extern cos
 extern ltoa
 extern strlen
+extern scan     ;long int scan(char* buf, long int buflen)
 
 segment .data
   welcome   db  "Welcome to Accurate Cosines by Ahmad Aldasouqi", 10
@@ -42,8 +43,9 @@ segment .data
 
 segment .bss
 
-  tics      resb 50
+  tics      resb  50
   inputstd  resb  50
+  buffer    resb  50
 
 segment .text
 
@@ -130,22 +132,11 @@ input:
 ;  mov   rsi,  [rsp]
 ;  mov   rdx,  10
 
-  ;temp for testing purposes
-  movsd xmm0, [example]
-
-
-  ; convert the number to a string put it in r14
   mov   rax,  0
-  mov   rdi,  __float64__(xmm0) 
-  mov   rsi,  inputstr
-  call  ftoa
-
-  ; get the length of the string put it in r15
-
-  mov   rax,  0
-  mov   rdi,  inputstr
-  call  strlen
-  mov   r15,  rax
+  mov   rdi,  buffer
+  mov   rsi,  50
+  call  scan
+  mov   rax,  r15
 
   ; print the string
   mov   rax,  0x01

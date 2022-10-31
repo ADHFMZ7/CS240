@@ -1,7 +1,7 @@
 #==================================
-#   Double Doubles
+#       Accurate Cosines
 #   Written by Ahmad Aldasouqi
-#
+#         10-30-2022
 #==================================
 #
 #  How to use:

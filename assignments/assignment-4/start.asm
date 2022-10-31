@@ -41,6 +41,7 @@ segment .bss
   inputstd  resb  50
   buffer    resb  50
   buffer2   resb  50
+  radians   resb  50
 
 segment .text
 
@@ -148,6 +149,25 @@ computation:
   call degtorad
   movsd xmm8, xmm0
 
+  ; Outputs the radians
+
+  movsd xmm0, xmm8
+  mov   rdi,  radians
+  call ftoa
+
+  ; get length of buffer 
+  mov   rax,  0
+  mov   rdi,  radians
+  call  strlen
+  mov   r15,  rax 
+
+  ;print buffer 
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  radians 
+  mov   rdx,  r15
+  syscall
+
   call cos 
   movsd xmm8, xmm0
 
@@ -156,6 +176,9 @@ computation:
   mov   rsi,  message
   mov   rdx,  30 
   syscall    
+
+
+
 
 
   ; Outputs computed value

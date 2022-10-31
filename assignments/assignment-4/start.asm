@@ -235,7 +235,6 @@ exit:
 
   ;prints current time
 
-
   mov   rdi,  r14
   mov   rsi,  tics
 

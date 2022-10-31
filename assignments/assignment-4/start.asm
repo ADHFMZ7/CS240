@@ -8,17 +8,7 @@
 ;======================================;
 
 
-; Raw Assembly Notes
-;
-; We use system calls to the OS to accomplish
-; tasks such as i/o
-;
-; a full list of linux system calls can be found at 
-; https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md
-;
-; rax register holds the number of the systemcall
-; the
-;
+
 
 global _start
 extern degtorad ;double degtorad(double degrees)
@@ -105,10 +95,8 @@ _start:
   ;prints current time
 
 
-  mov   rdi,  r14
-  mov   rsi,  tics
-
-
+  ;mov   rdi,  r14
+  ;mov   rsi,  tics
 
 
 input:

@@ -1,3 +1,9 @@
+;======================================================;
+;This function was used in the program Accurate Cosines;
+; Author: Ahmad Aldasouqi                              ;
+; Contact:  ahmadaldasouqi@csu.fullerton.edu           ;
+;======================================================;
+
 ; *******************************************************************************************************************************
 ;Function name:  atof
 ; This function takes a char pointer of ascii representation of a float number and returns an IEEE754 float

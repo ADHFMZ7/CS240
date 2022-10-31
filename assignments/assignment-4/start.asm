@@ -26,10 +26,11 @@ segment .data
   
 
   time      db  "The current time in tics is "
-  newline   db  10
-  goodbye   db  "Have a nice day. Bye!", 10 
+  time2     db  "The time in seconds is now "
 
-  example   dq  0x5A
+  newline   db  10
+
+  goodbye   db  "Have a nice day. Bye!", 10 
 
 segment .bss
 
@@ -181,8 +182,8 @@ exit:
  ;print string before displaying time
   mov   rax,  0x01
   mov   rdi,  0x01
-  mov   rsi,  time
-  mov   rdx,  28 
+  mov   rsi,  time2
+  mov   rdx,  27 
   syscall
 
   ;load current time into r14 register 

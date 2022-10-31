@@ -21,6 +21,7 @@ sys_read equ 0
 section .text
 
 scan:
+
         push r12
         push r13
         push r14

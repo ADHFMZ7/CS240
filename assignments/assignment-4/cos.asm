@@ -1,20 +1,13 @@
-global cosine
+global cos
 
-extern strlen
-
-sys_write equ 1
-sys_read equ 0
-stdout equ 1
-stdin equ 0
 
 segment .data
-hello db "Hello world", 10, 0
 
 segment .bss
 
 segment .text
 
-cosine:
+cos:
 
 push rbp
 mov  rbp,rsp

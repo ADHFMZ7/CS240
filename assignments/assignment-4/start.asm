@@ -150,6 +150,13 @@ computation:
   call degtorad
   movsd xmm8, xmm0
 
+   ;print message2 
+  mov   rax,  0x01
+  mov   rdi,  0x01
+  mov   rsi,  message2 
+  mov   rdx,  31 
+  syscall 
+
   ; Outputs the radians
 
   movsd xmm0, xmm8
@@ -169,14 +176,6 @@ computation:
   mov   rdx,  r15
   syscall
 
-
-
-
-  mov   rax,  0x01
-  mov   rdi,  0x01
-  mov   rsi,  message 
-  mov   rdx,  31 
-  syscall    
 
   ; print a newline
   mov   rax,  0x01

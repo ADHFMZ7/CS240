@@ -104,7 +104,7 @@ supervisor:
 
     ; compute mean
 
-    cvrsi2sd xmm12, [count]
+    cvtsi2sd xmm12, [count]
     divsd xmm0, xmm12
 
 

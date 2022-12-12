@@ -3,7 +3,7 @@
 
 #define TEST 100
 
-extern fill(int count, double* array);
+extern void fill(int count, double* array);
 
 int* make_array(int count)
 {

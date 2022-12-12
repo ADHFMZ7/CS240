@@ -1,11 +1,11 @@
 
-segment.bss
+segment .bss
 
 array: resq 1000000
 count: resq 1
 seconds: resq 1
 
-segment.data
+segment .data
 
 prompt: db "Please enter the count of data items to be placed into the arraw (max 1 million): ", 0
 int_form: db "%d", 0
@@ -14,7 +14,7 @@ prompt2 : db "Please enter the time interval in seconds between displayed values
 
 message: db "The array has been filled wiht non-deterministic random 640-bit float numbers", 10, 0
 message2: db "The arithmetic sum is ", 0
-message2: db "The supervisor will return the mean to the caller", 10, 0
+message3: db "The supervisor will return the mean to the caller", 10, 0
 
 segment .text
 

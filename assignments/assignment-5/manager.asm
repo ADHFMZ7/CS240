@@ -53,10 +53,6 @@ segment .text
 
   call  scanf
 
-  mov   rdi,  prompt
-  call  printf
-
-
 ; populate array of chosen size with non-deterministic random 64-bit float
 
   mov   rsi,  array
@@ -68,6 +64,7 @@ segment .text
   mov   rdi,  array
   mov   rsi,  0
   mov   rdx,  count 
+  call  display
 
 ; display time in tics
 
@@ -80,8 +77,6 @@ mov   rsi,  count
 
 ; display time in tics again
 
-mov rdi, message
-call printf
 
 ; display how many tics have elapsed and what that is in seconds
 

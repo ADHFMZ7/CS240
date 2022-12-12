@@ -17,7 +17,7 @@ fill:
     xor rcx, rcx
 generate:
     ; loop setup
-    cmp rcx,  rsi
+    cmp rcx,  rdi
     jge done  
 
     rdrand rax

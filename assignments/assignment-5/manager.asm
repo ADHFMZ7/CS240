@@ -74,7 +74,7 @@ segment .text
 
 mov   rdi,  array
 mov   rsi,  count
-call mergesort
+call quicksort
 
 ; display time in tics again
 
@@ -86,9 +86,9 @@ call printf
 
 ; display.c again to show sorted items
 
-; mov   rdi,  array
-; mov   rsi,  0
-; mov   rdx,  count
+ mov   rdi,  array
+ mov   rsi,  0
+ mov   rdx,  count
 
 ; return benchmark time to driver
 

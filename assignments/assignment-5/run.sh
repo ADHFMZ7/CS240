@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-#g++ -m64 -Wall -fno-pie -no-pie quicksort.c -c -o quicksort.o -g
+gcc -m64 -Wall -fno-pie -no-pie quicksort.c -c -o quicksort.o -g
 g++ -m64 -Wall -fno-pie -no-pie display.c -c -o display.o -g
 
 

@@ -19,7 +19,7 @@ loop:
     cmp rcx, r9 
     jge done
 
-    movsd xmm0, [r8 + 8*r9]
+    movsd xmm0, [r9 + 8*r8]
     mov rdi, double_form
     call printf
 

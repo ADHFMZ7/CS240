@@ -20,7 +20,6 @@ segment .text
   extern display
   extern quicksort
   extern fill
-  extern mergesort
 
   manager:
 

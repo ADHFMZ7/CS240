@@ -2,6 +2,7 @@
 
 // TODO: OPTIMIZE SMALL ARRAYS LATER
 
+extern "C" void display(double [], unsigned long, unsigned long);
 
 void display(double myarray[], unsigned long start, unsigned long count)
 {

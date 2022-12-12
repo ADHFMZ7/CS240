@@ -1,3 +1,5 @@
+extern "C" void quicksort(double [], int);
+
 void quicksort(double numbers[], int array_size)
 {
   int i, j;

@@ -73,7 +73,7 @@ segment .text
 
 mov   rdi,  array
 mov   rsi,  count
-;call quicksort
+call quicksort
 
 ; display time in tics again
 

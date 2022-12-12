@@ -3,7 +3,7 @@
 // TODO: OPTIMIZE SMALL ARRAYS LATER
 
 
-void display(int myarray[], unsigned long start, unsigned long count)
+void display(double myarray[], unsigned long start, unsigned long count)
 {
   if (count <= 30)
   {
@@ -12,9 +12,9 @@ void display(int myarray[], unsigned long start, unsigned long count)
       printf("[");
       for (int i = 0; i <= count; i++)
       {
-        printf("%i, ", myarray[i]);
+        printf("%f, ", myarray[i]);
       }
-      printf("%i]\n", myarray[count-1]);
+      printf("%f]\n", myarray[count-1]);
     }
   }
 
@@ -23,7 +23,7 @@ void display(int myarray[], unsigned long start, unsigned long count)
     printf("First 10 digits: ");
     for (int i = 0; i < 10; i++)
     {
-        printf("%i ", myarray[i]);
+        printf("%f ", myarray[i]);
     }
     printf("\n");
 
@@ -31,14 +31,14 @@ void display(int myarray[], unsigned long start, unsigned long count)
     printf("Middle 10 digits: ");
       for (int i = count/2-5; i < count/2 + 5; i++)
       {
-        printf("%i ", myarray[i]);
+        printf("%f ", myarray[i]);
       }
     printf("\n");
 
     printf("Last 10 digits: ");
       for (int i = count-10; i < count; i++)
       {
-        printf("%i ", myarray[i]);
+        printf("%f ", myarray[i]);
       }
       printf("\n");
   }

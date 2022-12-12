@@ -13,9 +13,16 @@ int_form: db "%d", 0
 prompt2 : db "Please enter the time interval in seconds between displayed values: ", 0
 
 message: db "The array has been filled wiht non-deterministic random 640-bit float numbers", 10, 0
+message2: db "The arithmetic sum is ", 0
+message2: db "The supervisor will return the mean to the caller", 10, 0
 
 segment .text
 
+extern printf
+extern scanf
+extern fill
+extern sum
+extern display
 
 supervisor:
 ; backup registers
@@ -68,6 +75,20 @@ supervisor:
     mov   rsi, [count]
     mov   rdx, [seconds]
 
+
+    ; print the sum
+
+    mov  rdi, message2
+    call printf
+
+    mov  rdi, array
+    mov  rsi, count
+    call sum
+
+    ; print exit message
+
+    mov  rdi, message3
+    call printf
 
     ; restore registers
 

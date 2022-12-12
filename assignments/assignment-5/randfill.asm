@@ -25,7 +25,7 @@ generate:
     ucomisd xmm0, xmm0
     jne     generate
 
-    movsd [array + 8*rcx], xmm0
+    movsd [rsi + 8*rcx], xmm0
     inc rcx
     jmp generate
 

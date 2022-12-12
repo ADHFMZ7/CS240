@@ -17,7 +17,7 @@ segment .text
   extern scanf
   extern printf
   extern display
-  extern sort
+  extern quicksort
   extern fill
   extern mergesort
 
@@ -72,6 +72,7 @@ segment .text
 ; run sort function
 
 mov   rdi,  array
+mov   rsi,  count
 call mergesort
 
 ; display time in tics again

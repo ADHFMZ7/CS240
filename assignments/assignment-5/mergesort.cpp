@@ -1,9 +1,0 @@
-
-
-double* mergesort(double* array)
-{
-
-    
-
-}
-

@@ -59,8 +59,8 @@ segment .text
 
 ; populate array of chosen size with non-deterministic random 64-bit float
 
-  mov   rdi,  array
-  mov   rsi,  count
+  mov   rsi,  array
+  mov   rdi,  count
   call  fill
 
 ; run display.c function

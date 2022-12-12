@@ -1,7 +1,7 @@
 #include "display.c"
 #include <stdlib.h>
 
-#define TEST 10000000
+#define TEST 100
 
 extern void fill(int count, double* array);
 

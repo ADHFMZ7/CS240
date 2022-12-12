@@ -53,6 +53,9 @@ segment .text
 
   call  scanf
 
+  mov   rdi,  prompt
+  call  printf
+
 
 ; populate array of chosen size with non-deterministic random 64-bit float
 

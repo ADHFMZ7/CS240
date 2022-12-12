@@ -10,13 +10,12 @@ global sum
 sum:
 
     xorpd xmm0, xmm0
-
-    mov rcx, rsi
+    xor   rcx,  rcx
 
 loop:
 
     inc rcx
-    cmp rcx, 0
+    cmp rcx, rsi
     je end
 
     movapd xmm1, [rdi]

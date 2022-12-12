@@ -9,7 +9,7 @@ segment .data
 
 prompt: db "Please enter the count of data items to be placed into the arraw (max 1 million): ", 0
 int_form: db "%d", 0
-double_form: db "%f", 10, 0
+double_form: db "%1.12ld" ,10,0
 
 prompt2 : db "Please enter the time interval in seconds between displayed values: ", 0
 
@@ -79,7 +79,7 @@ supervisor:
     mov   rdi,  array
     mov   rsi, [count]
     mov   rdx, [seconds]
-
+    call display
 
     ; print the sum
 

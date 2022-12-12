@@ -6,6 +6,6 @@ int main()
     int b = 3;
 
     double c = sum(a, b);
-    printf("%f\n,", c);
+    printf("%f\n", c);
 
 }

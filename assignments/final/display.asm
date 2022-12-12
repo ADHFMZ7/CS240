@@ -1,7 +1,7 @@
 
 segment .data
 
-double_form: db "%1.12lf" ,10,0
+double_form: db "%f" ,10,0
 
 section .bss
 

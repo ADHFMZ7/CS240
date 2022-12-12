@@ -15,6 +15,7 @@ display:
     xor rcx, rcx
     mov r8,  rdi ; array
     mov r9, rsi ; count
+    mov al, 1
 loop:
     cmp rcx, r9 
     jge done

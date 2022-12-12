@@ -86,6 +86,7 @@ call quicksort
  mov   rdi,  array
  mov   rsi,  0
  mov   rdx,  [count]
+ call display
 
 ; return benchmark time to driver
 

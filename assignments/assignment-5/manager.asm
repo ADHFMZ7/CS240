@@ -2,6 +2,7 @@
 segment .bss
 
 array: resq 10000000
+count: resq 1 
 
 segment .data
 
@@ -17,6 +18,8 @@ segment .text
   extern printf
   extern display
   extern sort
+  extern fill
+  extern mergesort
 
   manager:
 
@@ -46,28 +49,30 @@ segment .text
   call  printf
 
   mov   rdi, int_form ; format of int
-  mov   rsi, array    ; pointer to array
+  mov   rsi, count    ; number of ints 
 
-  call scanf
+  call  scanf
 
 
 ; populate array of chosen size with non-deterministic random 64-bit float
 
-populate:
-  mov rcx,  0
-  cmp rcx,  rax
-  jg 
-
-
+  mov   rdi,  array
+  mov   rsi,  count
+  call  fill
 
 ; run display.c function
 
+  mov   rdi,  array
+  mov   rsi,  0
+  mov   rdx,  count 
 
 ; display time in tics
 
 
 ; run sort function
 
+mov   rdi,  array
+call mergesort
 
 ; display time in tics again
 
@@ -77,6 +82,9 @@ populate:
 
 ; display.c again to show sorted items
 
+mov   rdi,  array
+mov   rsi,  0
+mov   rdx,  count
 
 ; return benchmark time to driver
 

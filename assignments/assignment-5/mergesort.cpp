@@ -1,6 +1,6 @@
 
 
-double* mergesort(double* )
+double* mergesort(double* array)
 {
 
     

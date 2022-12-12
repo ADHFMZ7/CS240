@@ -5,9 +5,9 @@
 
 extern void fill(int count, double* array);
 
-int* make_array(int count)
+double* make_array(int count)
 {
-  int* array = malloc(sizeof(int) * count);
+  double* array = malloc(sizeof(double) * count);
 
   fill(count, array);
 

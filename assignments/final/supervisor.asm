@@ -12,7 +12,7 @@ int_form: db "%d", 0
 
 prompt2 : db "Please enter the time interval in seconds between displayed values: ", 0
 
-message: db "The array has been filled wiht non-deterministic random 640-bit float numbers", 10, 0
+message: db "The array has been filled with non-deterministic random 64-bit float numbers", 10, 0
 message2: db "The arithmetic sum is ", 0
 message3: db "The supervisor will return the mean to the caller", 10, 0
 
@@ -85,7 +85,7 @@ supervisor:
 
     mov  rdi, array
     mov  rsi, count
-    call sum
+    ;call sum
 
     ; print exit message
 

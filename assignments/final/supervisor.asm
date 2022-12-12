@@ -95,8 +95,8 @@ supervisor:
     ; print sum 
 
     mov rdi, double_form
-    mov rsi, xmm14
-
+    ;mov rsi, xmm14
+    call printf
 
     ;
     mov  rdi, message3
@@ -111,8 +111,8 @@ supervisor:
     ; print mean
 
     mov rdi, double_form
-    mov rsi, xmm0
-
+    ;mov rsi, xmm0
+    call printf
 
     ; print exit message
 

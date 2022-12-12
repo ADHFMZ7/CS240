@@ -90,7 +90,7 @@ supervisor:
     mov  rsi, [count]
     call sum
 
-    mov xmm14, xmm0
+    movsd xmm14, xmm0
 
     ; print sum 
 

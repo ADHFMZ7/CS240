@@ -21,6 +21,7 @@ loop:
     jge done
 
     movsd xmm0, [r8 + 8*r9]
+    movq xmm1, xmm0
     mov rdi, double_form
     call printf
 

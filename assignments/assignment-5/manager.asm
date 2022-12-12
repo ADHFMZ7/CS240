@@ -63,7 +63,7 @@ segment .text
 
   mov   rdi,  array
   mov   rsi,  0
-  mov   rdx,  count 
+  mov   rdx,  [count]
   call  display
 
 ; display time in tics
@@ -72,7 +72,7 @@ segment .text
 ; run sort function
 
 mov   rdi,  array
-mov   rsi,  count
+mov   rsi,  [count]
 call quicksort
 
 ; display time in tics again
@@ -85,7 +85,7 @@ call quicksort
 
  mov   rdi,  array
  mov   rsi,  0
- mov   rdx,  count
+ mov   rdx,  [count]
 
 ; return benchmark time to driver
 

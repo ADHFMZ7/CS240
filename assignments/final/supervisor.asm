@@ -58,12 +58,12 @@ supervisor:
     call  scanf
 
     ; take input for delay
-    mov  rdi,  prompt2
-    call printf
+    ;mov  rdi,  prompt2
+    ;call printf
 
-    mov  rdi, int_form
-    mov  rsi, seconds
-    call scanf
+    ;mov  rdi, int_form
+    ;mov  rsi, seconds
+    ;call scanf
 
     ; populate array of chosen size with non-deterministic random 64-bit float
 
@@ -78,7 +78,7 @@ supervisor:
 
     mov   rdi,  array
     mov   rsi, [count]
-    mov   rdx, [seconds]
+    ;mov   rdx, [seconds]
     call display
 
     ; print the sum

@@ -3,13 +3,14 @@
 
 #define TEST 100
 
+extern fill(int count, double* array);
+
 int* make_array(int count)
 {
   int* array = malloc(sizeof(int) * count);
-  for (int i = 0; i < count; i++)
-  {
-    array[i] = i;
-  }
+
+  fill(count, array);
+
   return array;
 }
 

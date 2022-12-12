@@ -8,6 +8,7 @@ section .bss
 section .text
 
 global display
+extern printf
 
 display:
 

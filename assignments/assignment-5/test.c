@@ -17,7 +17,7 @@ double* make_array(int count)
 
 int main()
 {
-  int* array = make_array(TEST);
+  double* array = make_array(TEST);
 
   display(array, 0, TEST);
 }

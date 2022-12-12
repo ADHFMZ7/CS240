@@ -24,6 +24,8 @@ extern fill
 extern sum
 extern display
 
+global supervisor
+
 supervisor:
 ; backup registers
     push  rbp

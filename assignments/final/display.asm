@@ -7,7 +7,7 @@ section .bss
 
 section .text
 
-global dislay
+global display
 
 display:
 
@@ -26,5 +26,5 @@ loop:
     jmp loop
 
 done:
-    
+
     ret

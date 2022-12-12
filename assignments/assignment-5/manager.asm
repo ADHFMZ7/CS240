@@ -9,6 +9,7 @@ segment .data
 
   prompt:   db  "enter size of array: ", 0
   int_form:  db  "%d",0
+  message: db   "NUMBERS SORTED", 10, 10, 0
 
 segment .text 
 
@@ -77,6 +78,8 @@ call mergesort
 
 ; display time in tics again
 
+mov rdi, message
+call printf
 
 ; display how many tics have elapsed and what that is in seconds
 

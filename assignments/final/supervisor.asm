@@ -9,12 +9,15 @@ segment .data
 
 prompt: db "Please enter the count of data items to be placed into the arraw (max 1 million): ", 0
 int_form: db "%d", 0
+double_form: db "%f", 10, 0
 
 prompt2 : db "Please enter the time interval in seconds between displayed values: ", 0
 
 message: db "The array has been filled with non-deterministic random 64-bit float numbers", 10, 0
 message2: db "The arithmetic sum is ", 0
-message3: db "The supervisor will return the mean to the caller", 10, 0
+message3: db "The arithmetic mean is ", 0
+message4: db "The supervisor will return the mean to the caller", 10, 0
+nl: db 10, 0
 
 segment .text
 
@@ -84,12 +87,36 @@ supervisor:
     call printf
 
     mov  rdi, array
-    mov  rsi, count
-    ;call sum
+    mov  rsi, [count]
+    call sum
+
+    mov xmm14, xmm0
+
+    ; print sum 
+
+    mov rdi, double_form
+    mov rsi, xmm14
+
+
+    ;
+    mov  rdi, message3
+    call printf
+
+    ; compute mean
+
+    cvrsi2sd xmm12, [count]
+    divsd xmm0, xmm12
+
+
+    ; print mean
+
+    mov rdi, double_form
+    mov rsi, xmm0
+
 
     ; print exit message
 
-    mov  rdi, message3
+    mov  rdi, message4
     call printf
 
     ; restore registers

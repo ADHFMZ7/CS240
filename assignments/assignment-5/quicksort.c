@@ -1,4 +1,4 @@
-void q_sort(int numbers[], int left, int right)
+void q_sort(double numbers[], int left, int right)
 {
   int pivot, l_hold, r_hold;
   
@@ -30,7 +30,7 @@ void q_sort(int numbers[], int left, int right)
 }
 
 
-void quicksort(int numbers[], int array_size)
+void quicksort(double numbers[], int array_size)
 {
   q_sort(numbers, 0, array_size - 1);
 }

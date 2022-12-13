@@ -1,9 +1,6 @@
-
-segment .data
+section .data
 
 double_form: db "%f" ,10,0
-
-section .bss
 
 section .text
 
@@ -11,57 +8,40 @@ global display
 extern printf
 
 display:
+    ; save the registers that will be clobbered by the function
+    push rbp
+    mov rbp, rsp
+    push rdi
+    push rsi
+    push rdx
 
-    push  rbp
-    mov   rsp, rbp
-    push  rdi
-    push  rsi
-    push  rdx
-    push  rcx
-    push  r8
-    push  r9
-    push  r10
-    push  r11
-    push  r12
-    push  r13
-    push  r14
-    push  r15
-    push  rbx
-    pushf
+    ; align the stack to a multiple of 16 bytes
+    and rsp, -16
 
-    xor rcx, rcx
-    mov r8,  rdi ; array
-    mov r9, rsi ; count
+    ; set up the arguments for printf
+    mov rdi, double_form
+    mov rsi, [rbp + 16] ; array
+    mov rdx, [rbp + 24] ; count
+
+    xor rax, rax ; counter
+
 loop:
-    cmp rcx, r9
+    cmp rax, rdx
     jge done
 
-    movsd xmm0, [r8 + 8*rcx]
+    movsd xmm0, [rsi + 8*rax]
     movq xmm1, xmm0
-    and rsp, -16
-    push r9
-    mov rdi, double_form
     call printf
-    pop r9
 
-    inc rcx
+    inc rax
     jmp loop
 
 done:
-    popf
-    pop   rbx
-    pop   r15
-    pop   r14
-    pop   r13
-    pop   r12
-    pop   r11
-    pop   r10
-    pop   r9
-    pop   r8
-    pop   rcx
-    pop   rdx
-    pop   rsi
-    pop   rdi
-    pop   rbp
+    ; restore the saved registers
+    pop rdx
+    pop rsi
+    pop rdi
+    pop rbp
 
     ret
+

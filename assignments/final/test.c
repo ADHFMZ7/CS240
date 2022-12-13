@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-extern double sum(double* array, int count);
 extern void display(double* a, int b);
 
 int main()

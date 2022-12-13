@@ -31,10 +31,10 @@ display:
 
     xor rcx, rcx
     mov r8,  rdi ; array
-    mov r9, rsi ; count
+    mov r12, rsi ; count
     mov al, 1
 loop:
-    cmp rcx, r9 
+    cmp rcx, r12
     jge done
 
     movsd xmm0, [r8 + 8*rcx]

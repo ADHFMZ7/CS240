@@ -105,9 +105,9 @@ supervisor:
     ; compute mean
 
     cvtsi2sd xmm12, [count]
-    divsd xmm0, xmm12
+    divsd xmm1, xmm12
 
-
+    movsd xmm0, xmm1
     ; print mean
 
     mov rdi, double_form

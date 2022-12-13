@@ -12,8 +12,6 @@ global fill
 
 fill:
 
-
-
     push rcx
     push rax
     xor rcx, rcx

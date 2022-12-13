@@ -106,7 +106,6 @@ supervisor:
 
     cvtsi2sd xmm12, [count]
     divsd xmm1, xmm12
-
     movsd xmm0, xmm1
     ; print mean
 

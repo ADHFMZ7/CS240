@@ -108,6 +108,7 @@ supervisor:
 
     movsd xmm0, xmm12
     mov rdi, double_form
+    mov rsi, 1
     call printf
 
     divsd xmm0, xmm12

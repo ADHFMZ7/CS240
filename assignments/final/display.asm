@@ -31,16 +31,17 @@ display:
 
     xor rcx, rcx
     mov r8,  rdi ; array
-    mov r12, rsi ; count
-    mov al, 1
+    mov r9, rsi ; count
 loop:
-    cmp rcx, r12
+    cmp rcx, r9
     jge done
 
     movsd xmm0, [r8 + 8*rcx]
     movq xmm1, xmm0
     mov rdi, double_form
+    push r9
     call printf
+    pop r9
 
     inc rcx
     jmp loop

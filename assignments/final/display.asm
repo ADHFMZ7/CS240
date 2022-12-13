@@ -38,9 +38,9 @@ loop:
 
     movsd xmm0, [r8 + 8*rcx]
     movq xmm1, xmm0
+    and rsp, -16
     push r9
     mov rdi, double_form
-    and rsp, -16
     call printf
     pop r9
 

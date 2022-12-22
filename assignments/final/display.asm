@@ -1,3 +1,8 @@
+; Ahmad Aldasouqi
+; CPSC240-7
+; Final Program Test
+; ahmadaldasouqi@csu.fullerton.edu
+
 section .data
 
 double_form: db "%f" ,10,0

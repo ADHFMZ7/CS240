@@ -1,3 +1,7 @@
+; Ahmad Aldasouqi
+; CPSC240-7
+; Final Program Test
+; ahmadaldasouqi@csu.fullerton.edu
 
 segment .bss
 

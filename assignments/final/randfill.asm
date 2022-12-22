@@ -1,3 +1,8 @@
+; Ahmad Aldasouqi
+; CPSC240-7
+; Final Program Test
+; ahmadaldasouqi@csu.fullerton.edu
+
 ; input: number of doubles -> rdi
 ; input: pointer to array of that size -> rsi
 ; output: pointer to that amount of random floats

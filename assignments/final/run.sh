@@ -1,3 +1,7 @@
+#  Ahmad Aldasouqi
+#  CPSC240-7
+#  Final Program Test
+#  ahmadaldasouqi@csu.fullerton.edu
 
 nasm -g -f elf64 -l randfill.lis -o randfill.o randfill.asm
 nasm -g -f elf64 -l sum.lis -o sum.o sum.asm

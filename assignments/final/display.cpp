@@ -1,3 +1,8 @@
+//  Ahmad Aldasouqi
+//  CPSC240-7
+//  Final Program Test
+//  ahmadaldasouqi@csu.fullerton.edu
+
 #include <stdio.h>
 
 extern "C" void display(double*, unsigned long);
